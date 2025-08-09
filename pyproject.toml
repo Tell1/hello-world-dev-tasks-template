@@ -1,0 +1,51 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "hello-world-django"
+version = "0.1.0"
+description = "Lightweight Django Hello World application following KISS principles"
+requires-python = ">=3.12"
+dependencies = [
+    "django>=5.1.0",
+    "pydantic>=2.0.0",
+    "pydantic-settings>=2.0.0",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/hello_world"]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-django>=4.5.0",
+    "ruff>=0.1.0",
+    "mypy>=1.0.0",
+    "django-stubs>=4.2.0",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+plugins = ["mypy_django_plugin.main"]
+
+[tool.django-stubs]
+django_settings_module = "hello_world.settings"
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "hello_world.settings"
+python_files = ["tests.py", "test_*.py", "*_tests.py"]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.4.1",
+    "pytest-django>=4.11.1",
+]
