@@ -60,10 +60,10 @@ This is a minimal Django web application that demonstrates:
 
 ```bash
 # Run the development server
-uv run python src/hello_world/manage.py runserver
+uv run python hello_world/manage.py runserver
 
 # Run all tests
-uv run pytest src/hello_world/web/tests/ -v
+uv run pytest hello_world/web/tests/ -v
 
 # Format code
 uv run ruff format .
@@ -75,10 +75,10 @@ uv run ruff check .
 uv run ruff check --fix .
 
 # Type checking (if mypy is installed)
-uv run mypy src/
+uv run mypy
 
 # Run tests with coverage
-uv run pytest --cov=src --cov-report=html
+uv run pytest --cov-report=html
 ```
 
 ### Adding Dependencies
@@ -108,23 +108,22 @@ hello-world-dev-tasks/
 │   ├── create-prd.md          # PRD generation workflow
 │   ├── generate-tasks.md      # Task breakdown workflow
 │   └── process-task-list.md   # Task execution guidelines
-└── src/
-    └── hello_world/           # Django project
-        ├── manage.py          # Django management script
-        ├── __init__.py
-        ├── settings.py        # Django settings with Pydantic
-        ├── urls.py            # URL routing
-        ├── wsgi.py            # WSGI application
-        ├── web/               # Web application module
-        │   ├── __init__.py
-        │   ├── views.py       # Hello World view
-        │   ├── urls.py        # Web URL patterns
-        │   └── tests/         # Tests alongside code
-        │       ├── __init__.py
-        │       └── test_views.py
-        └── templates/
-            └── web/
-                └── hello.html # Hello World template
+└── hello_world/           # Django project
+   ├── manage.py          # Django management script
+   ├── __init__.py
+   ├── settings.py        # Django settings with Pydantic
+   ├── urls.py            # URL routing
+   ├── wsgi.py            # WSGI application
+   ├── web/               # Web application module
+   │   ├── __init__.py
+   │   ├── views.py       # Hello World view
+   │   ├── urls.py        # Web URL patterns
+   │   └── tests/         # Tests alongside code
+   │       ├── __init__.py
+   │       └── test_views.py
+   └── templates/
+      └── web/
+            └── hello.html # Hello World template
 ```
 
 ## Best Practices
