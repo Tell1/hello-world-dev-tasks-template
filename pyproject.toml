@@ -14,7 +14,7 @@ dependencies = [
 ]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/hello_world"]
+packages = ["hello_world"]
 
 [project.optional-dependencies]
 dev = [

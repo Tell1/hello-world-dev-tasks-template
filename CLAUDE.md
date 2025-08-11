@@ -34,47 +34,46 @@ Avoid building functionality on speculation. Implement features only when they a
 Follow strict vertical slice architecture with tests living next to the code they test:
 
 ```
-src/project/
-    __init__.py
-    main.py
-    tests/
-        test_main.py
-    conftest.py
-
-    # Core modules
-    database/
-        __init__.py
-        connection.py
-        models.py
-        tests/
-            test_connection.py
-            test_models.py
-
-    auth/
-        __init__.py
-        authentication.py
-        authorization.py
-        tests/
-            test_authentication.py
-            test_authorization.py
-
-    # Feature slices
-    features/
-        user_management/
-            __init__.py
-            handlers.py
-            validators.py
-            tests/
-                test_handlers.py
-                test_validators.py
-
-        payment_processing/
-            __init__.py
-            processor.py
-            gateway.py
-            tests/
-                test_processor.py
-                test_gateway.py
+myproject/
+├── manage.py                  # The Django project management script
+├── myproject/                 # Project settings and configurations
+│   ├── __init__.py
+│   ├── settings.py            # Project settings
+│   ├── urls.py                # Project-level URLs
+│   ├── wsgi.py                # WSGI entry-point for deployment
+│   ├── asgi.py                # ASGI entry-point for asynchronous support
+│   └── settings/              # Settings module to handle environment-specific settings
+│       ├── __init__.py
+│       ├── base.py            # Base settings
+│       ├── development.py     # Development-specific settings
+│       ├── production.py      # Production-specific settings
+│       └── testing.py         # Testing-specific settings
+├── apps/                      # Application-specific code
+│   ├── __init__.py
+│   ├── core/                  # Core app (example, contains models, views, etc.)
+│   │   ├── __init__.py
+│   │   ├── models.py          # Models for the app
+│   │   ├── views.py           # Views for the app
+│   │   ├── urls.py            # App-specific URL routing
+│   │   ├── forms.py           # Forms for the app
+│   │   ├── admin.py           # App-specific admin configuration
+│   │   ├── tests/             # Unit and integration tests
+│   │   │   ├── __init__.py
+│   │   │   ├── test_models.py # Test models
+│   │   │   ├── test_views.py  # Test views
+│   │   │   ├── test_forms.py  # Test forms
+│   │   │   └── test_utils.py  # Test utility functions
+│   │   └── migrations/        # Database migrations for the app
+│   │       └── __init__.py
+│   ├── app2/                  # Another app (repeat similar structure)
+│   │   ├── __init__.py
+│   │   ├── models.py
+│   │   └── tests/
+├── static/                    # Static files (CSS, JS, images)
+│   └── ...
+├── templates/                 # HTML templates
+│   └── ...
+└── .gitignore                 # Git ignore file to exclude unnecessary files
 ```
 
 ## 🛠️ Development Environment
